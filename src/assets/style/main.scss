@@ -1,0 +1,20 @@
+@use './setup/vars';
+// @use './setup/mixings';
+@use './setup/typography';
+
+@use './pages/Home.scss';
+
+
+@use './cmps/AppHeader.scss';
+@use './cmps/Hero.scss';
+@use './cmps/Techstack.scss';
+@use './cmps/Projects.scss';
+@use './cmps/Contact.scss';
+// @use './cmps/AppFooter.scss';
+// @use './cmps/DynamicModal.scss';
+// @use './cmps/UserMsg.scss';
+
+
+@use './base/base';
+@use './base/forms';
+@use './base/layouts';

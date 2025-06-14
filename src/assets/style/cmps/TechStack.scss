@@ -1,0 +1,26 @@
+@use '../setup/vars';
+@use '../setup/typography';
+
+.tech-stack-container {
+    display: grid;
+    // gap: 20px;
+
+    .tech-stack-title {
+        font-family: 'Outfit', 'Roboto', sans-serif;
+        font-size: 2em;
+        margin-bottom: 1em;
+        text-align: center;
+        // border: 2px solid black;
+    }
+
+
+    .tech-stack-list {
+
+        display: flex;
+
+        .tech-stack-item {
+            border: 2px solid black
+        }
+
+    }
+}

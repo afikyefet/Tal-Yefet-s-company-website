@@ -1,0 +1,44 @@
+@use '../setup/vars';
+@use '../setup/typography';
+
+
+.header-container {
+    position: fixed;
+    top: 0;
+    background-color: white;
+
+    height: 70px;
+    // background-color: red;
+    // border-bottom: 2px solid black;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    // justify-content: space-between;
+
+    .header-title {
+        font-family: 'Outfit', 'Roboto', sans-serif;
+        justify-self: center;
+        font-weight: 700;
+        font-size: 2em;
+        color: black;
+
+        .header-link:visited,
+        .header-link:active {
+            color: black;
+        }
+    }
+}
+
+.header-link {
+    font-weight: 700;
+    // color: #fff; // base colour
+    text-decoration: none;
+
+    /* dynamic shadow driven by CSS variables */
+    text-shadow: var(--shadow-x, 0) var(--shadow-y, 0) 3px rgba(0, 0, 0, 0.15);
+
+    /* polish */
+    transition: text-shadow 0.08s linear; // tiny easing removes harsh jumps
+    will-change: text-shadow;
+}

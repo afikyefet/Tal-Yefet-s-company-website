@@ -1,0 +1,23 @@
+@use '../setup/vars';
+@use '../setup/typography';
+
+.hero-container {
+    width: 100%;
+    height: 340px;
+    display: grid;
+    place-items: center;
+
+    .hero-title {
+        font-family: 'Outfit', 'Roboto', sans-serif;
+        font-size: 3em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5em;
+        text-align: center;
+        max-width: 600px;
+        margin-bottom: 2em;
+    }
+}
