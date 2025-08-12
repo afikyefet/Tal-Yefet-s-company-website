@@ -1,20 +1,31 @@
-@use './setup/vars';
-// @use './setup/mixings';
-@use './setup/typography';
+// Setup
+@import 'setup/vars';
+@import 'setup/mixings';
+@import 'setup/typography';
 
-@use './pages/Home.scss';
+// Base
+@import 'base/base';
+@import 'base/forms';
+@import 'base/layouts';
 
+// Components
+@import 'cmps/AppHeader';
+@import 'cmps/AppFooter';
+@import 'cmps/Hero';
+@import 'cmps/Contact';
 
-@use './cmps/AppHeader.scss';
-@use './cmps/Hero.scss';
-@use './cmps/Techstack.scss';
-@use './cmps/Projects.scss';
-@use './cmps/Contact.scss';
-// @use './cmps/AppFooter.scss';
-// @use './cmps/DynamicModal.scss';
-// @use './cmps/UserMsg.scss';
+// Pages
+@import 'pages/Home';
+@import 'pages/AdminPanel';
+@import 'pages/Blog';
+@import 'pages/BlogPost';
+@import 'pages/Videos';
+@import 'pages/About';
+@import 'pages/Services';
+@import 'pages/Contact';
 
-
-@use './base/base';
-@use './base/forms';
-@use './base/layouts';
+// Admin Components
+@import 'cmps/PostEditor';
+@import 'cmps/VideoUploader';
+@import 'cmps/PostList';
+@import 'cmps/VideoList';
