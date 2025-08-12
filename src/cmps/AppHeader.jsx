@@ -2,13 +2,24 @@ import { Link } from "react-router-dom";
 
 export function AppHeader() {
     return (
-        <section className="header-container full">
-            <span className="header-title">
-                <Link to="/" className="header-link">
-                    Tal Yefet
-                </Link>
-            </span>
-        </section>
+        <header className="app-header">
+            <div className="header-container">
+                <div className="header-title">
+                    <Link to="/" className="header-link">
+                        טל יפת - ייעוץ משאבי אנוש
+                    </Link>
+                </div>
+                <nav className="header-nav">
+                    <Link to="/" className="nav-link">בית</Link>
+                    <Link to="/about" className="nav-link">אודות</Link>
+                    <Link to="/services" className="nav-link">שירותים</Link>
+                    <Link to="/blog" className="nav-link">בלוג</Link>
+                    <Link to="/videos" className="nav-link">סרטונים</Link>
+                    <Link to="/contact" className="nav-link">צור קשר</Link>
+                    <Link to="/admin" className="nav-link admin-link">ניהול</Link>
+                </nav>
+            </div>
+        </header>
     );
 }
 
