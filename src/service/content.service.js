@@ -60,12 +60,29 @@ const sampleVideos = [
 export const contentService = {
   // Posts
   async getPosts() {
-    let posts = await storageService.query(STORAGE_KEY_POSTS)
-    if (!posts || !posts.length) {
-      posts = samplePosts
-      await storageService.save(STORAGE_KEY_POSTS, posts)
+    try {
+      console.log('ContentService: Getting posts...')
+      let posts = await storageService.query(STORAGE_KEY_POSTS)
+      console.log('ContentService: Posts from storage:', posts)
+      
+      if (!posts || !posts.length) {
+        console.log('ContentService: No posts found, using sample data')
+        posts = samplePosts
+        try {
+          await storageService.save(STORAGE_KEY_POSTS, posts)
+          console.log('ContentService: Sample posts saved to storage')
+        } catch (saveError) {
+          console.error('ContentService: Error saving sample posts:', saveError)
+        }
+      }
+      
+      console.log('ContentService: Returning posts:', posts)
+      return posts
+    } catch (error) {
+      console.error('ContentService: Error in getPosts:', error)
+      console.log('ContentService: Returning sample posts as fallback')
+      return samplePosts
     }
-    return posts
   },
 
   async getPostById(postId) {
@@ -99,12 +116,29 @@ export const contentService = {
 
   // Videos
   async getVideos() {
-    let videos = await storageService.query(STORAGE_KEY_VIDEOS)
-    if (!videos || !videos.length) {
-      videos = sampleVideos
-      await storageService.save(STORAGE_KEY_VIDEOS, videos)
+    try {
+      console.log('ContentService: Getting videos...')
+      let videos = await storageService.query(STORAGE_KEY_VIDEOS)
+      console.log('ContentService: Videos from storage:', videos)
+      
+      if (!videos || !videos.length) {
+        console.log('ContentService: No videos found, using sample data')
+        videos = sampleVideos
+        try {
+          await storageService.save(STORAGE_KEY_VIDEOS, videos)
+          console.log('ContentService: Sample videos saved to storage')
+        } catch (saveError) {
+          console.error('ContentService: Error saving sample videos:', saveError)
+        }
+      }
+      
+      console.log('ContentService: Returning videos:', videos)
+      return videos
+    } catch (error) {
+      console.error('ContentService: Error in getVideos:', error)
+      console.log('ContentService: Returning sample videos as fallback')
+      return sampleVideos
     }
-    return videos
   },
 
   async getVideoById(videoId) {

@@ -11,8 +11,15 @@ export const UPDATE_VIDEO = 'UPDATE_VIDEO'
 export const REMOVE_VIDEO = 'REMOVE_VIDEO'
 
 // Action Creators
-export const setPosts = (posts) => ({ type: SET_POSTS, posts })
-export const setVideos = (videos) => ({ type: SET_VIDEOS, videos })
+export const setPosts = (posts) => {
+  console.log('Action: setPosts called with:', posts)
+  return { type: SET_POSTS, posts }
+}
+
+export const setVideos = (videos) => {
+  console.log('Action: setVideos called with:', videos)
+  return { type: SET_VIDEOS, videos }
+}
 export const addPost = (post) => ({ type: ADD_POST, post })
 export const updatePost = (post) => ({ type: UPDATE_POST, post })
 export const removePost = (postId) => ({ type: REMOVE_POST, postId })
@@ -23,7 +30,9 @@ export const removeVideo = (videoId) => ({ type: REMOVE_VIDEO, videoId })
 // Async Actions
 export const loadPosts = () => async (dispatch) => {
   try {
+    console.log('Loading posts...')
     const posts = await contentService.getPosts()
+    console.log('Posts loaded:', posts)
     dispatch(setPosts(posts))
   } catch (error) {
     console.error('Error loading posts:', error)
@@ -32,7 +41,9 @@ export const loadPosts = () => async (dispatch) => {
 
 export const loadVideos = () => async (dispatch) => {
   try {
+    console.log('Loading videos...')
     const videos = await contentService.getVideos()
+    console.log('Videos loaded:', videos)
     dispatch(setVideos(videos))
   } catch (error) {
     console.error('Error loading videos:', error)

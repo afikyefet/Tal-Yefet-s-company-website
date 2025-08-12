@@ -128,7 +128,7 @@
         color: var(--text-primary);
 
         &:hover {
-          background: darken(var(--border-color), 10%);
+          background: var(--gray-300);
         }
       }
 
@@ -137,7 +137,7 @@
         color: white;
 
         &:hover {
-          background: darken(var(--accent-color), 10%);
+          background: var(--accent-dark);
           transform: translateY(-2px);
         }
 

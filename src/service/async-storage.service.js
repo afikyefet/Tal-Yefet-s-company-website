@@ -4,11 +4,19 @@ export const storageService = {
     post,
     put,
     remove,
+    save,
 }
 
 function query(entityType, delay = 500) {
-    var entities = JSON.parse(localStorage.getItem(entityType)) || []
-    return new Promise(resolve => setTimeout(() => resolve(entities), delay))
+    try {
+        console.log(`AsyncStorage: Querying ${entityType}`)
+        var entities = JSON.parse(localStorage.getItem(entityType)) || []
+        console.log(`AsyncStorage: Found ${entities.length} entities for ${entityType}`)
+        return new Promise(resolve => setTimeout(() => resolve(entities), delay))
+    } catch (error) {
+        console.error(`AsyncStorage: Error querying ${entityType}:`, error)
+        return new Promise(resolve => setTimeout(() => resolve([]), delay))
+    }
 }
 
 function get(entityType, entityId) {
@@ -20,7 +28,7 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity) {
-    newEntity = {...newEntity}
+    newEntity = { ...newEntity }
     newEntity._id = _makeId()
     return query(entityType).then(entities => {
         entities.push(newEntity)
@@ -46,6 +54,20 @@ function remove(entityType, entityId) {
         entities.splice(idx, 1)
         _save(entityType, entities)
     })
+}
+
+function save(entityType, entities) {
+    try {
+        console.log(`AsyncStorage: Saving ${entities.length} entities to ${entityType}`)
+        return new Promise(resolve => {
+            _save(entityType, entities)
+            console.log(`AsyncStorage: Successfully saved to ${entityType}`)
+            resolve(entities)
+        })
+    } catch (error) {
+        console.error(`AsyncStorage: Error saving to ${entityType}:`, error)
+        return Promise.reject(error)
+    }
 }
 
 // Private functions

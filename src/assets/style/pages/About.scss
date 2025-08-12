@@ -291,7 +291,7 @@
             color: white;
 
             &:hover {
-              background: darken(var(--accent-color), 10%);
+              background: var(--accent-dark);
               transform: translateY(-2px);
             }
           }

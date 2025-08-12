@@ -1,12 +1,12 @@
 import {
+  ADD_POST,
+  ADD_VIDEO,
+  REMOVE_POST,
+  REMOVE_VIDEO,
   SET_POSTS,
   SET_VIDEOS,
-  ADD_POST,
   UPDATE_POST,
-  REMOVE_POST,
-  ADD_VIDEO,
-  UPDATE_VIDEO,
-  REMOVE_VIDEO
+  UPDATE_VIDEO
 } from '../actions/content.action'
 
 const initialState = {
@@ -15,14 +15,19 @@ const initialState = {
 }
 
 export function contentReducer(state = initialState, action) {
+  console.log('ContentReducer: Received action:', action.type, action)
+  console.log('ContentReducer: Current state:', state)
+
   switch (action.type) {
     case SET_POSTS:
+      console.log('ContentReducer: Setting posts to:', action.posts)
       return {
         ...state,
         posts: action.posts
       }
 
     case SET_VIDEOS:
+      console.log('ContentReducer: Setting videos to:', action.videos)
       return {
         ...state,
         videos: action.videos
